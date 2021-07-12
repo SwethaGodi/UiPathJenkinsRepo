@@ -7,14 +7,10 @@ pipeline {
                 git branch: 'main', credentialsId: '89f4a99b-56af-48ad-be82-2c1f5110f75f', url: 'https://github.com/SwethaGodi/UiPathJenkinsRepo.git'
             }
         }
-         stage('Build') {
+        stage('Build') {
             steps {
+		echo "${WORKSPACE}"
                 UiPathPack( outputPath: '${WORKSPACE}\\Output', projectJsonPath: '${WORKSPACE}', version: CurrentVersion())
-            }
-        }
-        stage('Deploy') {
-            steps {
-                UiPathDeploy credentials: Token(accountName: 'mirackhaqfin', credentialsId: '4510e6d2-333e-4044-a826-bf9909ab2d88'), environments: 'DevEnvironment', folderName: 'Default', orchestratorAddress: 'https://cloud.uipath.com/', orchestratorTenant: 'MiracleSoftwareSystemsDefault', packagePath: 'C:\\Users\\DELL\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\UiPath_CICD_Pipeline_main\\Output'
             }
         }
     }
