@@ -13,10 +13,10 @@ pipeline {
                 UiPathPack( outputPath: '${WORKSPACE}\\Output', projectJsonPath: '${WORKSPACE}', version: CurrentVersion())
             }
         }
+        stage('Deploy') {
+            steps {
+                UiPathDeploy( credentials: Token(accountName: 'mirackhaqfin', credentialsId: 'e5716300-cb5e-456f-842d-db94f8c7e4ee'), environments: 'UiDemoEnvi', folderName: 'Default', orchestratorAddress: 'https://cloud.uipath.com/', orchestratorTenant: 'MiracleSoftwareSystemsDefault', packagePath: 'C:\\Users\\miracle\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\UiPathPipeline_main\\Output')
+            }
+        }
     }
 }
-
-
-
-
-            
