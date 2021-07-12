@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
 		echo "${WORKSPACE}"
-                UiPathPack( outputPath: '${WORKSPACE}\\Output', projectJsonPath: '${WORKSPACE}', version: CurrentVersion())
+                UiPathPack( outputPath: '${WORKSPACE}\\Output', projectJsonPath: 'project.json', version: CurrentVersion())
             }
         }
         stage('Deploy') {
